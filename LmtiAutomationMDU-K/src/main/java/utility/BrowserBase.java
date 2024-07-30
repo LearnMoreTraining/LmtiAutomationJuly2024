@@ -4,6 +4,7 @@ import org.openqa.selenium.InvalidArgumentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import java.io.File;
@@ -22,20 +23,38 @@ public class BrowserBase {
         FileInputStream fis = new FileInputStream(f);
         Properties prob = new Properties();
         prob.load(fis);
-        if(prob.getProperty("browser").equalsIgnoreCase("chrome")){
-            driver = new ChromeDriver();
-        }
-        else if (prob.getProperty("browser").equalsIgnoreCase("edge")){
-            driver = new EdgeDriver();
-        }
-        else if (prob.getProperty("browser").equalsIgnoreCase("safari")){
-            driver = new SafariDriver();
-        }
-        else{
-            throw new InvalidArgumentException("enter valid browser");
+//        if(prob.getProperty("browser").equalsIgnoreCase("chrome")){
+//            driver = new ChromeDriver();
+//        }
+//        else if (prob.getProperty("browser").equalsIgnoreCase("edge")){
+//            driver = new EdgeDriver();
+//        }
+//        else if (prob.getProperty("browser").equalsIgnoreCase("safari")){
+//            driver = new SafariDriver();
+//        }
+//        else{
+//            throw new InvalidArgumentException("enter valid browser");
+//        }
+
+        switch (prob.getProperty("browser").toLowerCase()){
+
+            case "chrome":
+                driver = new ChromeDriver();
+                break;
+            case "edge":
+                driver = new EdgeDriver();
+                break;
+            case "safari":
+                driver = new SafariDriver();
+                break;
+            case "firefox":
+                driver = new FirefoxDriver();
+            default:
+                throw new InvalidArgumentException("enter valid browser name");
         }
 
         driver.get(prob.getProperty("testenvironemnt"));
+        driver.manage().window().maximize();
         return driver;
     }
 }
