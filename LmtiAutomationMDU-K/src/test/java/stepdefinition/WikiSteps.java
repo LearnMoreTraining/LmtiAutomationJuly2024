@@ -21,4 +21,11 @@ public class WikiSteps {
     public void extractShareHoldingValue() {
         context.pageObjectManager.getWikiPage().getShareHoldingValue();
     }
+
+    @Given("user extracts the column one and two values")
+    public void userExtractsTheColumnOneAndTwoValues() {
+
+        context.pageObjectManager.getWikiPage().getInfyColumnOneValue();
+        context.pageObjectManager.getWikiPage().getInfyColumnTwoValue();
+    }
 }
