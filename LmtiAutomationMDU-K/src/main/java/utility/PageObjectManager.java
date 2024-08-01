@@ -45,5 +45,10 @@ public class PageObjectManager {
         return jqueryPage;
     }
 
+    public WikiPage getWikiPage(){
+        WikiPage wikiPage = new WikiPage(driver);
+        return wikiPage;
+    }
+
 
 }
