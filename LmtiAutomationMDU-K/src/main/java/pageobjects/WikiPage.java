@@ -13,7 +13,7 @@ public class WikiPage {
         this.driver = driver;
     }
 
-    public void getShareholderValues(){
+    public List<String> getShareholderValues(){
         List<String> shareHolderVlaue = new ArrayList<String>();
        int columnSize = driver.findElements(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr/child::td[1]")).size();
         for(int i=0 ; i < columnSize ; i++ ){
@@ -21,17 +21,17 @@ public class WikiPage {
            String shareholderText= driver.findElements(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr/child::td[1]")).get(i).getText();
             shareHolderVlaue.add(shareholderText);
         }
-        System.out.println(shareHolderVlaue);
+      return shareHolderVlaue;
 
     }
 
-    public void getShareHoldingValue(){
+    public List<String> getShareHoldingValue(){
         List <String> shareHoldingValue = new ArrayList<String>();
         int columnTwoSize = driver.findElements(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr/child::td[2]")).size();
         for(int j= 0 ; j < columnTwoSize;j++){
             shareHoldingValue.add(driver.findElements(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr/child::td[2]")).get(j).getText());
         }
-        System.out.println(shareHoldingValue);
+       return shareHoldingValue;
     }
 
     public void getInfyColumnOneValue(){

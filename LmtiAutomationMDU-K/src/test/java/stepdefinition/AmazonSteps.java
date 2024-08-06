@@ -29,4 +29,6 @@ public class AmazonSteps {
 
         Assert.assertEquals("Baby Wishlist",context.pageObjectManager.getBabyWishList().getBabyWishListText());
     }
+
+
 }

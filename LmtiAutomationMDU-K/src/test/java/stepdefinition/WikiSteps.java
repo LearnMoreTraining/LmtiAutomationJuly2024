@@ -1,7 +1,9 @@
 package stepdefinition;
 
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import utility.TestContext;
 
 public class WikiSteps {
@@ -27,5 +29,14 @@ public class WikiSteps {
 
         context.pageObjectManager.getWikiPage().getInfyColumnOneValue();
         context.pageObjectManager.getWikiPage().getInfyColumnTwoValue();
+    }
+
+    @Then("validating the mapping")
+    public void validatingTheMapping() {
+
+        Assert.assertEquals("Public",context.pageObjectManager.getWikiPage().getShareholderValues().get(3));
+        Assert.assertEquals("16.44%",context.pageObjectManager.getWikiPage().getShareHoldingValue().get(3));
+
+
     }
 }

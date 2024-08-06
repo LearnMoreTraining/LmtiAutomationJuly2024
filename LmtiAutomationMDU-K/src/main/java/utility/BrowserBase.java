@@ -19,10 +19,12 @@ public class BrowserBase {
    public WebDriver driver ;
 
     public WebDriver getDriver() throws IOException {
-        File f = new File("src/main/resources/configurations/frameworkconfig.properties");
-        FileInputStream fis = new FileInputStream(f);
-        Properties prob = new Properties();
-        prob.load(fis);
+
+        if(driver == null) {
+            File f = new File("src/main/resources/configurations/frameworkconfig.properties");
+            FileInputStream fis = new FileInputStream(f);
+            Properties prob = new Properties();
+            prob.load(fis);
 //        if(prob.getProperty("browser").equalsIgnoreCase("chrome")){
 //            driver = new ChromeDriver();
 //        }
@@ -36,25 +38,27 @@ public class BrowserBase {
 //            throw new InvalidArgumentException("enter valid browser");
 //        }
 
-        switch (prob.getProperty("browser").toLowerCase()){
+            switch (prob.getProperty("browser").toLowerCase()) {
 
-            case "chrome":
-                driver = new ChromeDriver();
-                break;
-            case "edge":
-                driver = new EdgeDriver();
-                break;
-            case "safari":
-                driver = new SafariDriver();
-                break;
-            case "firefox":
-                driver = new FirefoxDriver();
-            default:
-                throw new InvalidArgumentException("enter valid browser name");
+                case "chrome":
+                    driver = new ChromeDriver();
+                    break;
+                case "edge":
+                    driver = new EdgeDriver();
+                    break;
+                case "safari":
+                    driver = new SafariDriver();
+                    break;
+                case "firefox":
+                    driver = new FirefoxDriver();
+                default:
+                    throw new InvalidArgumentException("enter valid browser name");
+            }
+
+            driver.get(prob.getProperty("testenvironemnt"));
+            driver.manage().window().maximize();
+
         }
-
-        driver.get(prob.getProperty("testenvironemnt"));
-        driver.manage().window().maximize();
         return driver;
     }
 }
