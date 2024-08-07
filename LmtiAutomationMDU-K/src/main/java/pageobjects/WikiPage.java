@@ -4,7 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class WikiPage {
     WebDriver driver ;
@@ -32,6 +34,18 @@ public class WikiPage {
             shareHoldingValue.add(driver.findElements(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr/child::td[2]")).get(j).getText());
         }
        return shareHoldingValue;
+    }
+
+    public Map<String, String> getShareholderAndHoldingValue(){
+        Map<String, String> shareHolderAndHoldingValue = new HashMap<String,String>();
+        int rowCount = driver.findElements(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr")).size();
+            for(int k = 0 ; k < rowCount ; k++){
+             String shareHolderValue=   driver.findElements(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr/child::td[1]")).get(k).getText();
+             String shareHoldingValue=   driver.findElements(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr/child::td[2]")).get(k).getText();
+                shareHolderAndHoldingValue.put(shareHolderValue,shareHoldingValue);
+            }
+        System.out.println(shareHolderAndHoldingValue);
+            return shareHolderAndHoldingValue;
     }
 
     public void getInfyColumnOneValue(){

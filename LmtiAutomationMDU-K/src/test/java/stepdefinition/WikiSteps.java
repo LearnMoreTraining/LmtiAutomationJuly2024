@@ -34,8 +34,10 @@ public class WikiSteps {
     @Then("validating the mapping")
     public void validatingTheMapping() {
 
-        Assert.assertEquals("Public",context.pageObjectManager.getWikiPage().getShareholderValues().get(3));
-        Assert.assertEquals("16.44%",context.pageObjectManager.getWikiPage().getShareHoldingValue().get(3));
+      //  Assert.assertEquals("Public",context.pageObjectManager.getWikiPage().getShareholderValues().get(3));
+      //  Assert.assertEquals("16.44%",context.pageObjectManager.getWikiPage().getShareHoldingValue().get(3));
+
+        Assert.assertEquals("16.44%",context.pageObjectManager.getWikiPage().getShareholderAndHoldingValue().get("Public"));
 
 
     }
