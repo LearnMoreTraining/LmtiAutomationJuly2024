@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
                 "html:target/test-output/report.html",
                 "json:target/test-output/report.json",
                 "junit:target/test-output/junitreport.xml"},
-       tags = "@wiki01"
+       tags = "@Spice01"
 )
 
 public class FeatureRunner {
