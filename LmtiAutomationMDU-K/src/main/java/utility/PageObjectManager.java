@@ -50,5 +50,10 @@ public class PageObjectManager {
         return wikiPage;
     }
 
+    public SpiceBookingPage getBookingPage(){
+        SpiceBookingPage bookingPage = new SpiceBookingPage(driver);
+        return bookingPage;
+    }
+
 
 }

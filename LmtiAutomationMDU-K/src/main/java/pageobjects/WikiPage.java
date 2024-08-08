@@ -2,6 +2,7 @@ package pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,13 +38,29 @@ public class WikiPage {
     }
 
     public Map<String, String> getShareholderAndHoldingValue(){
-        Map<String, String> shareHolderAndHoldingValue = new HashMap<String,String>();
-        int rowCount = driver.findElements(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr")).size();
-            for(int k = 0 ; k < rowCount ; k++){
-             String shareHolderValue=   driver.findElements(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr/child::td[1]")).get(k).getText();
-             String shareHoldingValue=   driver.findElements(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr/child::td[2]")).get(k).getText();
-                shareHolderAndHoldingValue.put(shareHolderValue,shareHoldingValue);
+//        Map<String, String> shareHolderAndHoldingValue = new HashMap<String,String>();
+//        int rowCount = driver.findElements(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr")).size();
+//            for(int k = 0 ; k < rowCount ; k++){
+//             String shareHolderValue=   driver.findElements(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr/child::td[1]")).get(k).getText();
+//             String shareHoldingValue=   driver.findElements(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr/child::td[2]")).get(k).getText();
+//                shareHolderAndHoldingValue.put(shareHolderValue,shareHoldingValue);
+//            }
+//        System.out.println(shareHolderAndHoldingValue);
+
+        Map<String, String> shareHolderAndHoldingValue = new HashMap<>();
+
+        List<WebElement> rows = driver.findElements(By.xpath("//table[contains(@class, 'wikitable sortable jquery-tablesorter')]//tbody/tr"));
+
+        for (WebElement row : rows) {
+            List<WebElement> columns = row.findElements(By.tagName("td"));
+            if (columns.size() >= 2) { // Ensure that there are at least 2 columns
+                String shareholder = columns.get(0).getText();
+                String shareholding = columns.get(1).getText().trim(); // Remove extra spaces/newlines
+
+                shareHolderAndHoldingValue.put(shareholder, shareholding);
             }
+        }
+
         System.out.println(shareHolderAndHoldingValue);
             return shareHolderAndHoldingValue;
     }
