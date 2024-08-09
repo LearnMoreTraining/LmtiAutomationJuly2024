@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import utility.ReadExcel;
+
+import java.io.IOException;
 
 public class HomePage {
 
@@ -20,6 +23,12 @@ public class HomePage {
     public void enterProductName(String productName){
 
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys(productName);
+    }
+
+
+    public void enterProductNameFromExcel() throws IOException {
+
+        driver.findElement(By.id("twotabsearchtextbox")).sendKeys(ReadExcel.getDataFromExcel("ProductDeatils",0,0));
     }
 
     public void clickSearchIcon(){

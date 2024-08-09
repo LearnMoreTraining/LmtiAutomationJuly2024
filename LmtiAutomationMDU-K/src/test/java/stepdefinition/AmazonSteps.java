@@ -11,6 +11,8 @@ import pageobjects.HomePage;
 import utility.BrowserBase;
 import utility.TestContext;
 
+import java.io.IOException;
+
 public class AmazonSteps {
 
     TestContext context;
@@ -31,4 +33,8 @@ public class AmazonSteps {
     }
 
 
+    @Given("user enter the product details")
+    public void userEnterTheProductDetails() throws IOException {
+        context.pageObjectManager.getHomePage().enterProductNameFromExcel();
+    }
 }
