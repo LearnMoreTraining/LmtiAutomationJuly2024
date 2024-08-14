@@ -11,6 +11,8 @@ import pageobjects.HomePage;
 import utility.BrowserBase;
 import utility.TestContext;
 
+import java.io.IOException;
+
 public class AmazonSteps {
 
     TestContext context;
@@ -28,7 +30,13 @@ public class AmazonSteps {
     public void validateTheBabyWishListText() {
 
         Assert.assertEquals("Baby Wishlist",context.pageObjectManager.getBabyWishList().getBabyWishListText());
+
+
     }
 
 
+    @Given("user enter the product details")
+    public void userEnterTheProductDetails() throws IOException {
+        context.pageObjectManager.getHomePage().enterProductName("sheet1",1,2);
+    }
 }

@@ -30,4 +30,17 @@ public class LmtiSteps {
 
         Assert.assertEquals("Invalid Credentials.",context.pageObjectManager.getLmtiLoginPage().getErrorMessage());
     }
+
+    @Given("user clicks on change text")
+    public void userClicksOnChangeText() {
+
+        context.pageObjectManager.getLmtiExplictPage().clickChangeTextButton();
+    }
+
+    @Then("validate the text")
+    public void validateTheText() {
+        Assert.assertEquals("Hello, Learn More Aspirants",context.pageObjectManager.getLmtiExplictPage().getChangeText());
+        ;
+    }
+
 }

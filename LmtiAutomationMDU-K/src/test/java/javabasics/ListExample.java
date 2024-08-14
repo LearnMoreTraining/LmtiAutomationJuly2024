@@ -15,6 +15,7 @@ public class ListExample {
         System.out.println(l);
         l.add(560);
         l.add(120);
+        l.add(1,77);
         System.out.println(l);
         System.out.println(l.get(1));
 

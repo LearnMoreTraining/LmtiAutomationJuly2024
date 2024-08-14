@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 
 
@@ -55,8 +56,11 @@ public class BrowserBase {
                     throw new InvalidArgumentException("enter valid browser name");
             }
 
-            driver.get(prob.getProperty("testenvironemnt"));
+
             driver.manage().window().maximize();
+            driver.manage().deleteAllCookies();
+            driver.get(prob.getProperty("testenvironemnt"));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         }
         return driver;
