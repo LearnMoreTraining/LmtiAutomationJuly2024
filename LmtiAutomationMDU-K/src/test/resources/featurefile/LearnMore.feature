@@ -12,3 +12,8 @@ Feature: Learn More Page Automation
     Given user enter username and password
     When user clicks the login button
     Then user validate the error message
+
+      @lmti03
+  Scenario: Text Validation
+    Given user clicks on change text
+    Then validate the text

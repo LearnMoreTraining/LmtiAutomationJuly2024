@@ -21,14 +21,14 @@ public class HomePage {
     }
 
     public void enterProductName(String productName){
-
+        //  5 second
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys(productName);
     }
 
 
-    public void enterProductNameFromExcel() throws IOException {
+    public void enterProductName(String sheetName, int row , int column) throws IOException {
 
-        driver.findElement(By.id("twotabsearchtextbox")).sendKeys(ReadExcel.getDataFromExcel("ProductDeatils",0,0));
+        driver.findElement(By.id("twotabsearchtextbox")).sendKeys(ReadExcel.getDataFromExcel(sheetName,row,column));
     }
 
     public void clickSearchIcon(){

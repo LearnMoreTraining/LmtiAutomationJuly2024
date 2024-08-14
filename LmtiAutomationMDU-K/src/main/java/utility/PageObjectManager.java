@@ -55,5 +55,10 @@ public class PageObjectManager {
         return bookingPage;
     }
 
+    public LmtiExplicitWait getLmtiExplictPage(){
+        LmtiExplicitWait explicitWait = new LmtiExplicitWait(driver);
+        return explicitWait;
+    }
+
 
 }
