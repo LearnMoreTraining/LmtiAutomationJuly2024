@@ -22,6 +22,13 @@ public class LmtiExplicitWait {
         js.executeScript("arguments[0].click()",driver.findElement(By.cssSelector("#quote")));
     }
 
+    public void scroll(){
+
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("window.scrollBy(0,document.body.scrollHeight)","");
+        jse.executeScript("arguments[0].scrollIntoView()",driver.findElement(By.cssSelector("#quote")));
+    }
+
     public String getChangeText(){
 
         String text ;
