@@ -56,7 +56,6 @@ public class BrowserBase {
                     throw new InvalidArgumentException("enter valid browser name");
             }
 
-
             driver.manage().window().maximize();
             driver.manage().deleteAllCookies();
             driver.get(prob.getProperty("testenvironemnt"));
